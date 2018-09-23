@@ -1,0 +1,31 @@
+import React from "react";
+import "./Button.css";
+
+//inline
+const style = {
+    small: {
+        padding: 10
+    },
+    large: {
+        padding: 20
+    }
+};
+
+const Button = (props) => {
+    return (
+    <button onClick={props.onClick} 
+        style={props.size === "lg" ? style.large : style.small}>
+        {props.children}
+    </button>
+    );
+}
+
+// //external
+// const Button = (props) => {
+//     return (
+//     <button className={props.size == "lg" ? "large" : "small"}>
+//         {props.children}
+//     </button>
+//     );
+// }
+export default Button;
