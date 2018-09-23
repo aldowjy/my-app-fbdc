@@ -15,10 +15,10 @@ function SimpleAppBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="Primary">
         <Toolbar>
           <Typography variant="title" color="inherit">
-            My First Application
+            Find Me
           </Typography>
         </Toolbar>
       </AppBar>

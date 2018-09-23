@@ -1,31 +1,38 @@
 import React from "react";
-import "./Button.css";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
+import SearchIcon from "@material-ui/icons/Search";
 
-//inline
-const style = {
-    small: {
-        padding: 10
-    },
-    large: {
-        padding: 20
-    }
-};
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit
+  },
+  leftIcon: {
+    marginRight: theme.spacing.unit
+  },
+  iconSmall: {
+    fontSize: 20
+  }
+});
 
-const Button = (props) => {
-    return (
-    <button onClick={props.onClick} 
-        style={props.size === "lg" ? style.large : style.small}>
+function IconLabelButtons(props) {
+  const { classes } = props;
+  return (
+    <div>
+      <Button variant="contained" color="primary" className={classes.button}>
+        <SearchIcon
+          className={classNames(classes.leftIcon, classes.iconSmall)}
+        />
         {props.children}
-    </button>
-    );
+      </Button>
+    </div>
+  );
 }
 
-// //external
-// const Button = (props) => {
-//     return (
-//     <button className={props.size == "lg" ? "large" : "small"}>
-//         {props.children}
-//     </button>
-//     );
-// }
-export default Button;
+IconLabelButtons.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(IconLabelButtons);
